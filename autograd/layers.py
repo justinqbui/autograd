@@ -28,7 +28,31 @@ class Linear:
     
     def __call__(self, x: 'Tensor') -> 'Tensor':
         return [w(x) for w in self.w]
+
+class Conv2d:
+    def __init__(self, 
+    in_channels: int, 
+    out_channels: int, 
+    kernel_size: int, 
+    stride: int, 
+    padding: int, 
+    bias: bool=True):
+        
+        self.w = [Tensor(kernel_size) for _ in range(out_channels)]
+        if bias:
+            self.b = Scalar(0.0)
+        self.stride = stride
+        self.padding = padding
     
+    def __repr__(self):
+        return f"Conv2d({self.w})"
+    
+    def __call__(self, x: 'Tensor') -> 'Tensor':
+        pass
+        
+    
+
+        
 
     
 
